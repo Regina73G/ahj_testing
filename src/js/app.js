@@ -1,4 +1,4 @@
-import { drawCardValidator, drawCards } from './dom';
+import CardValidator from './dom';
 
 const cards  = [
   {
@@ -38,5 +38,7 @@ const cards  = [
   },
 ];
 
-drawCardValidator();
-drawCards(cards);
+const cardValidator = new CardValidator();
+
+cardValidator.drawCardValidator();
+cardValidator.drawCards(cards);

@@ -1,53 +1,59 @@
-// const cardsContext = require.context('../img/cards', false, /\.svg$/);
+import { validateCard } from './validateCard';
+import { detectCard } from './detectCard';
 
-export function drawCardValidator() {
-  const container = document.querySelector('.container');
+export default class CardValidator{
+  constructor(parentEl) {
+    this.parentEl = parentEl;
+    this.cards = null;;
+  }
 
-  const cardValidator = document.createElement('div');
-  cardValidator.classList.add('card-validator');
+  drawCardValidator() {
+    this.parentEl = document.querySelector('.container');
 
-  const title = document.createElement('h3');
-  title.classList.add('validator-title');
-  title.textContent = 'Check your credit card number';
+    const cardValidator = document.createElement('div');
+    cardValidator.classList.add('card-validator');
 
-  const cardsContainer = document.createElement('ul');
-  cardsContainer.classList.add('cards');
+    const title = document.createElement('h3');
+    title.classList.add('validator-title');
+    title.textContent = 'Check your credit card number';
 
-  const form = document.createElement('form');
-  form.classList.add('validator-form');
+    this.cards = document.createElement('ul');
+    this.cards.classList.add('cards');
 
-  const input = document.createElement('input');
-  input.classList.add('card-validator_input');
-  input.type = 'text';
-  input.name = 'validator';
-  input.id = 'cardValidatorInput';
-  input.placeholder = 'Credit card number';
+    const form = document.createElement('form');
+    form.classList.add('validator-form');
 
-  const button = document.createElement('button');
-  button.classList.add('card-validator_button');
-  button.type = 'submit';
-  button.textContent = 'Click to Validate';
+    const input = document.createElement('input');
+    input.classList.add('card-validator_input');
+    input.type = 'text';
+    input.name = 'validator';
+    input.id = 'cardValidatorInput';
+    input.placeholder = 'Credit card number';
 
-  container.append(cardValidator);
-  cardValidator.append(title);
-  cardValidator.append(cardsContainer);
-  cardValidator.append(form);
-  form.append(input);
-  form.append(button);
-}
+    const button = document.createElement('button');
+    button.classList.add('card-validator_button');
+    button.type = 'submit';
+    button.textContent = 'Click to Validate';
 
-export function drawCards(cards) {
-  const cardsContainer = document.querySelector('.cards');
+    this.parentEl.append(cardValidator);
+    cardValidator.append(title);
+    cardValidator.append(this.cards);
+    cardValidator.append(form);
+    form.append(input);
+    form.append(button);
+  }
 
-  cards.forEach(card => {
-    const cardEl = document.createElement('li');
+  drawCards(cards) {
+    cards.forEach(card => {
+      const cardEl = document.createElement('li');
 
-    const img = document.createElement('img');
-    img.src = require(`../img/cards/${card.name}.svg`);
-    img.alt = card.name;
-    img.dataset.cardName = card.name; 
+      const img = document.createElement('img');
+      img.src = require(`../img/cards/${card.name}.svg`);
+      img.alt = card.name;
+      img.dataset.cardName = card.name; 
 
-    cardsContainer.append(cardEl);
-    cardEl.append(img);
-  });
+      this.cards.append(cardEl);
+      cardEl.append(img);
+    });
+  }
 }
