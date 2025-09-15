@@ -1,0 +1,40 @@
+Licenses for card icons
+=======================
+
+1. VISA icon
+  Source: https://www.svgrepo.com/svg/328127/visa
+  License: CC0
+  License URL: https://www.svgrepo.com/page/licensing/#Logo
+
+2. MasterCard icon
+  Source: https://www.svgrepo.com/svg/328121/mastercard
+  License: CC0
+  License URL: https://www.svgrepo.com/page/licensing/#Logo
+
+3. American Express icon
+  Source: https://www.svgrepo.com/svg/328129/amex
+  License: CC0
+  License URL: https://www.svgrepo.com/page/licensing/#Logo
+
+4. Discover icon
+  Source: https://www.svgrepo.com/svg/328132/discover
+  License: CC0
+  License URL: https://www.svgrepo.com/page/licensing/#Logo
+
+5. JCB icon
+  Source: https://www.svgrepo.com/svg/328126/jcb
+  License: CC0
+  License URL: https://www.svgrepo.com/page/licensing/#Logo
+
+6. Diners icon
+  Source: https://www.svgrepo.com/svg/328128/diners
+  License: CC0
+  License URL: https://www.svgrepo.com/page/licensing/#Logo
+
+7. Mir icon
+  Source: https://www.svgrepo.com/svg/328143/mir
+  License: CC0
+  License URL: https://www.svgrepo.com/page/licensing/#Logo
+
+All icons are free for personal and commercial use.
+Downloaded on: 15.09.2025
