@@ -84,7 +84,7 @@ export default class CardValidator{
       e.preventDefault();
       const value = input.value;
 
-      if (this.checkInput(value, false)) return;
+      if (this.checkInput(value)) return;
 
       const isValid = validateCard(value);
 
@@ -100,11 +100,11 @@ export default class CardValidator{
     });
   }
 
-  checkInput(value, allowEmpty = true) {
+  checkInput(value) {
     const input = this.parentEl.querySelector('.card-validator_input');
     const tooltip = this.parentEl.querySelector('.card-validator_tooltip');
 
-    if (/[^0-9\s]/.test(value) || (!allowEmpty && value.trim() === '')) {
+    if (/[^0-9\s]/.test(value)) {
       tooltip.textContent = 'Please insert a credit card number';
       input.classList.add('invalid');
       input.classList.remove('valid');

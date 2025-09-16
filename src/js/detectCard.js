@@ -1,6 +1,8 @@
 export function detectCard(cardNumber) {
   const num = cardNumber.replace(/\D/g, '');
 
+  if (num === '') return null;
+
   if (/^4/.test(num)) return 'VISA';
   if (/^5[1-5]/.test(num) || /^2(2[2-9][1-9]|[3-6][0-9]{2}|7[01][0-9]|720)/.test(num)) return 'MasterCard';
   if (/^3[47]/.test(num)) return 'AmericanExpress';
