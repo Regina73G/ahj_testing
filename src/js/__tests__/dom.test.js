@@ -3,8 +3,6 @@
  */
 
 import CardValidator from '../dom.js';
-import { detectCard } from '../detectCard';
-import { validateCard } from '../validateCard';
 
 let parentEl;
 let validator;
