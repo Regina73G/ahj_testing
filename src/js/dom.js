@@ -8,8 +8,6 @@ export default class CardValidator{
   }
 
   drawCardValidator() {
-    this.parentEl = document.querySelector('.container');
-
     const cardValidator = document.createElement('div');
     cardValidator.classList.add('card-validator');
 
@@ -35,12 +33,16 @@ export default class CardValidator{
     button.type = 'submit';
     button.textContent = 'Click to Validate';
 
+    const tooltip = document.createElement('span');
+    tooltip.classList.add('card-validator_tooltip');
+
     this.parentEl.append(cardValidator);
     cardValidator.append(title);
     cardValidator.append(this.cards);
     cardValidator.append(form);
     form.append(input);
     form.append(button);
+    form.append(tooltip);
   }
 
   drawCards(cards) {
@@ -55,5 +57,62 @@ export default class CardValidator{
       this.cards.append(cardEl);
       cardEl.append(img);
     });
+  }
+
+  handler() {
+    const form = this.parentEl.querySelector('.validator-form');
+    const input = this.parentEl.querySelector('.card-validator_input');
+    const tooltip = this.parentEl.querySelector('.card-validator_tooltip');
+
+    // при вводе в инпут — определяем карту
+    input.addEventListener('input', () => {
+      const value = input.value;
+      const system = detectCard(value);
+
+      if (this.checkInput(value)) return;
+
+      this.cards.querySelectorAll('img').forEach(img => {
+        img.classList.remove('inactive');
+        if (system && img.dataset.cardName !== system) {
+          img.classList.add('inactive');
+        }
+      });
+    });
+
+    // при сабмите — проверяем по алгоритму Луна
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = input.value;
+
+      if (this.checkInput(value, false)) return;
+
+      const isValid = validateCard(value);
+
+      if (isValid) {
+        tooltip.textContent = 'The card number is valid';
+        input.classList.add('valid');
+        input.classList.remove('invalid');
+      } else {
+        tooltip.textContent = 'The card number is invalid';
+        input.classList.add('invalid');
+        input.classList.remove('valid');
+      }
+    });
+  }
+
+  checkInput(value, allowEmpty = true) {
+    const input = this.parentEl.querySelector('.card-validator_input');
+    const tooltip = this.parentEl.querySelector('.card-validator_tooltip');
+
+    if (/[^0-9\s]/.test(value) || (!allowEmpty && value.trim() === '')) {
+      tooltip.textContent = 'Please insert a credit card number';
+      input.classList.add('invalid');
+      input.classList.remove('valid');
+      return true;
+    } else {
+      tooltip.textContent = '';
+      input.classList.remove('invalid');
+      return false;
+    }
   }
 }

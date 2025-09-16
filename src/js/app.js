@@ -38,7 +38,10 @@ const cards  = [
   },
 ];
 
-const cardValidator = new CardValidator();
+
+const parentEl = document.querySelector('.container');
+const cardValidator = new CardValidator(parentEl);
 
 cardValidator.drawCardValidator();
 cardValidator.drawCards(cards);
+cardValidator.handler();
